@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Павел — репетитор по математике и программированию</title>
+  <meta name="description" content="Онлайн-занятия по математике, информатике и программированию для школьников и студентов.">
+
+  <style>
+    :root {
+      --bg: #f4f6fa;
+      --surface: #ffffff;
+      --text: #19263b;
+      --muted: #68768b;
+      --accent: #2864dc;
+      --accent-light: #edf2ff;
+      --border: #e3e8f0;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1060px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Шапка */
+
+    header {
+      padding: 17px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 750;
+      letter-spacing: -0.4px;
+    }
+
+    .header-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Первый экран */
+
+    .hero {
+      padding: 22px 0 48px;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: 0 10px 35px rgba(23, 35, 56, 0.035);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 6px 11px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 650;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(29px, 3.5vw, 39px);
+      line-height: 1.15;
+      letter-spacing: -1.2px;
+      max-width: 650px;
+      margin-bottom: 13px;
+    }
+
+    .intro {
+      font-size: 20px;
+      color: var(--text);
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .intro strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .credentials {
+      border-left: 3px solid var(--accent);
+      padding: 2px 0 2px 14px;
+    }
+
+    .credentials p {
+      font-size: 13.5px;
+    }
+
+    .credentials p + p {
+      margin-top: 4px;
+    }
+
+    .credentials strong {
+      font-weight: 650;
+    }
+
+    /* Фотография */
+
+    .photo-placeholder {
+      width: min(100%, 250px);
+      aspect-ratio: 1;
+      margin-left: auto;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #edf2ff, #dce7fb);
+      border: 5px solid var(--surface);
+      box-shadow: 0 0 0 2px #cbd9f2, 0 12px 28px rgba(40, 100, 220, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #536b95;
+      font-size: 13px;
+      font-weight: 600;
+      overflow: hidden;
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Направления */
+
+    .subjects-heading {
+      font-size: 21px;
+      letter-spacing: -0.5px;
+      margin-bottom: 15px;
+    }
+
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+
+    .subject {
+      position: relative;
+      background: linear-gradient(145deg, #fff, #f3f7ff);
+      border: 1px solid #cbd9f2;
+      border-radius: 16px;
+      padding: 19px 17px;
+      min-height: 120px;
+      box-shadow: 0 7px 18px rgba(31, 65, 123, 0.09);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .subject:hover {
+      transform: translateY(-4px);
+      border-color: #9db8ec;
+      box-shadow: 0 12px 24px rgba(31, 65, 123, 0.15);
+    }
+
+    .subject h3 {
+      color: #173d87;
+      font-size: 17px;
+      font-weight: 750;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .subject p {
+      display: inline-block;
+      color: #263b5d;
+      background: #e8efff;
+      border-radius: 9px;
+      padding: 8px 10px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* Стоимость */
+
+    .price-section {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 11px;
+    }
+
+    .bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .prices {
+      display: flex;
+      gap: 12px;
+    }
+
+    .price {
+      min-width: 175px;
+      padding: 12px 16px;
+      background: #f6f8fc;
+      border-radius: 11px;
+    }
+
+    .price:first-child {
+      background: var(--accent-light);
+    }
+
+    .price-value {
+      font-size: 25px;
+      font-weight: 750;
+      letter-spacing: -0.7px;
+    }
+
+    .price:first-child .price-value {
+      color: var(--accent);
+    }
+
+    .price-description {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .action {
+      text-align: right;
+    }
+
+    .format-note {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 42px;
+      padding: 10px 15px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(23, 35, 56, 0.15);
+    }
+
+    .contact-link:focus-visible {
+      outline: 3px solid #9db8ec;
+      outline-offset: 3px;
+    }
+
+    .contact-link--max {
+      background: #2864dc;
+      color: #fff;
+    }
+
+    .contact-link--whatsapp {
+      background: #e7f7ed;
+      border-color: #bce7ca;
+      color: #126b36;
+    }
+
+    .contact-link--telegram {
+      background: #e8f5fc;
+      border-color: #bfdfef;
+      color: #12618c;
+    }
+
+    /* Дополнительная информация */
+
+    .details {
+      padding: 5px 0 65px;
+    }
+
+    .details-header {
+      margin-bottom: 18px;
+    }
+
+    .details-heading {
+      font-size: 25px;
+      letter-spacing: -0.7px;
+      margin-bottom: 4px;
+    }
+
+    .details-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
+    }
+
+    .detail-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 21px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 4px 14px rgba(23, 35, 56, 0.035);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-3px);
+      border-color: #c4d4f1;
+      box-shadow: 0 10px 24px rgba(31, 65, 123, 0.09);
+    }
+
+    .detail-icon {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #edf2ff, #dce7ff);
+      color: var(--accent);
+      font-size: 17px;
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+
+    .detail-card:hover .detail-icon {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .detail-content h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .detail-content p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 19px 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Адаптация для планшетов и телефонов */
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 24px, 540px);
+      }
+
+      .hero {
+        padding: 15px 0 35px;
+      }
+
+      .hero-card {
+        padding: 22px 18px;
+      }
+
+      .hero-top {
+        grid-template-columns: 1fr 115px;
+        gap: 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+        letter-spacing: -0.8px;
+      }
+
+      .intro {
+        font-size: 14px;
+      }
+
+      .credentials p {
+        font-size: 12px;
+      }
+
+      .subjects {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .subject {
+        min-height: auto;
+        padding: 15px;
+      }
+
+      .subject h3 {
+        font-size: 16px;
+        margin-bottom: 9px;
+      }
+
+      .subject p {
+        font-size: 14px;
+      }
+
+      .bottom-row {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .prices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .price {
+        min-width: 0;
+        padding: 12px;
+      }
+
+      .price-value {
+        font-size: 22px;
+      }
+
+      .action {
+        text-align: left;
+      }
+
+      .contact-links {
+        justify-content: flex-start;
+      }
+
+      .contact-link {
+        flex: 1 1 auto;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-top {
+        grid-template-columns: 1fr 95px;
+        gap: 10px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+      }
+
+      .prices {
+        grid-template-columns: 1fr;
+      }
+
+      .header-note {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <!-- Главный экран -->
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+
+          <div class="hero-top">
+
+            <div class="hero-info">
+              <div class="eyebrow">
+                Для школьников 5–11 классов и студентов
+              </div>
+
+              <h1>Математика, информатика и программирование</h1>
+
+              <h2 class="intro">
+                Меня зовут Павел. Я действующий разработчик
+                и преподаватель
+              </h2>
+
+              <div class="credentials">
+                <p><strong>Образование:</strong> МГТУ им. Н. Э. Баумана, специальность «Информатика и вычислительная техника»</p>
+                <p><strong>Опыт работы:</strong> 3 года коммерческой разработки — 2 года в НИИ и 1 год в крупном банке</p>
+              </div>
+            </div>
+                
+            <div class="photo-placeholder">
+              <img src="photo.jpg" alt="Павел">
+            </div>
+
+          </div>
+
+          <h2 class="subjects-heading">Что я преподаю</h2>
+
+          <div class="subjects">
+
+            <div class="subject">
+              <h3>Математика</h3>
+              <p>Алгебра и геометрия для 5–11 классов</p>
+            </div>
+
+            <div class="subject">
+              <h3>Информатика</h3>
+              <p>Школьная программа для 5–11 классов</p>
+            </div>
+
+            <div class="subject">
+              <h3>Программирование</h3>
+              <p>Python, C++, C#, SQL для школьников и студентов</p>
+            </div>
+
+          </div>
+
+          <div class="price-section">
+            <div class="section-label">Стоимость · 60 минут</div>
+
+            <div class="bottom-row">
+
+              <div class="prices">
+                <div class="price">
+                  <div class="price-value">1 000 ₽</div>
+                  <div class="price-description">Первое занятие</div>
+                </div>
+
+                <div class="price">
+                  <div class="price-value">1 500 ₽</div>
+                  <div class="price-description">Последующие занятия</div>
+                </div>
+              </div>
+
+              <div class="action">
+                <div class="format-note">
+                  Напишите мне удобным способом:
+                </div>
+                <div class="contact-links">
+                  <a class="contact-link contact-link--max"
+                     href="https://max.ru/u/f9LHodD0cOL4ejzY8imPFlCl9D6xeHWLSbwJNvfBEO_b9hlyxc5tqDcbCQU"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    MAX
+                  </a>
+                  <a class="contact-link contact-link--whatsapp"
+                     href="https://wa.me/79055036585"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    WhatsApp
+                  </a>
+                  <a class="contact-link contact-link--telegram"
+                     href="https://t.me/paul_gomozov"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    Telegram
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Дополнительная информация -->
+
+    <section class="details">
+      <div class="container">
+
+        <div class="details-header">
+          <h2 class="details-heading">Подробнее о занятиях</h2>
+          <p class="details-subtitle">
+            Несколько слов о формате и направлениях работы
+          </p>
+        </div>
+
+        <div class="details-grid">
+
+          <div class="detail-card">
+            <div class="detail-icon">01</div>
+            <div class="detail-content">
+              <h3>Школьная программа</h3>
+              <p>
+                Помощь с домашними заданиями, разбор сложных тем,
+                восполнение пробелов и повышение успеваемости
+                по математике и информатике.
+              </p>
+            </div>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-icon">02</div>
+            <div class="detail-content">
+              <h3>Программирование для студентов</h3>
+              <p>
+                Разбор университетских курсов, помощь с лабораторными
+                работами и учебными проектами на Python, C++, C# и SQL.
+              </p>
+            </div>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-icon">03</div>
+            <div class="detail-content">
+              <h3>Практический подход</h3>
+              <p>
+                Объясняю материал последовательно, разбираю примеры
+                и предлагаю задачи для закрепления знаний.
+              </p>
+            </div>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-icon">04</div>
+            <div class="detail-content">
+              <h3>Индивидуальные занятия</h3>
+              <p>
+                Темп и содержание занятий подбираются с учётом
+                текущего уровня знаний и целей ученика.
+                Продолжительность — 60 минут.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      Павел · Репетитор по математике, информатике и программированию
+    </div>
+  </footer>
+
+</body>
+</html>
