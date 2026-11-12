@@ -188,7 +188,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .subject {
@@ -234,13 +234,21 @@
       padding-top: 20px;
     }
 
+    .prices-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(23, 35, 56, 0.035);
+    }
+
     .section-label {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--muted);
       font-weight: 700;
-      margin-bottom: 11px;
+      margin: 0 0 11px 2px;
     }
 
     .bottom-row {
@@ -283,38 +291,81 @@
     }
 
     .action {
-      text-align: right;
+      min-width: 340px;
+      padding: 20px;
+      border: 1px solid #e2e9f7;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #f8faff, #f1f5ff);
+      box-shadow: 0 8px 24px rgba(34, 69, 130, 0.07);
+      text-align: center;
+    }
+
+    .contact-phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      margin: 0 0 12px;
+      padding: 11px 14px;
+      border: 1px solid #dce5f6;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--accent);
+      box-shadow: 0 2px 6px rgba(23, 35, 56, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .contact-phone:hover {
+      transform: translateY(-2px);
+      border-color: #b7c9ed;
+      box-shadow: 0 6px 14px rgba(40, 100, 220, 0.12);
+    }
+
+    .contact-phone:focus-visible {
+      outline: 3px solid #9db8ec;
+      outline-offset: 3px;
+    }
+
+    .contact-phone-number {
+      font-size: 17px;
+      font-weight: 750;
+      letter-spacing: 0.1px;
     }
 
     .format-note {
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: 700;
       color: var(--text);
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .contact-links {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 9px;
     }
 
     .contact-link {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      min-height: 42px;
-      padding: 10px 15px;
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 44px;
+      padding: 10px 13px;
       border: 1px solid transparent;
-      border-radius: 11px;
+      border-radius: 12px;
       font-size: 13px;
       font-weight: 700;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
     }
 
     .contact-link:hover {
       transform: translateY(-2px);
       box-shadow: 0 5px 12px rgba(23, 35, 56, 0.15);
+      filter: saturate(1.12);
     }
 
     .contact-link:focus-visible {
@@ -495,15 +546,18 @@
       }
 
       .action {
-        text-align: left;
+        min-width: 0;
+        width: 100%;
+        text-align: center;
       }
 
       .contact-links {
-        justify-content: flex-start;
+        justify-content: center;
       }
 
       .contact-link {
-        flex: 1 1 auto;
+        flex: 1 1 0;
+        min-width: 0;
       }
 
       .details-grid {
@@ -529,8 +583,257 @@
         grid-template-columns: 1fr;
       }
 
+      .contact-links {
+        gap: 6px;
+      }
+
+      .contact-link {
+        padding: 9px 5px;
+        font-size: 12px;
+      }
+
       .header-note {
         font-size: 11px;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      :root {
+        --text: #17263d;
+        --muted: #52627a;
+        --border: #d6deea;
+      }
+
+      html,
+      body {
+        background: #fff;
+        color: var(--text);
+        font-size: 9pt;
+        line-height: 1.35;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        padding: 11mm;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 0;
+      }
+
+      .hero-card {
+        padding: 6mm;
+        border-color: #cbd7e8;
+        border-radius: 5mm;
+        box-shadow: none;
+      }
+
+      .hero-top {
+        grid-template-columns: 1fr 34mm;
+        gap: 5mm;
+        align-items: start;
+        margin-bottom: 5mm;
+      }
+
+      .eyebrow {
+        margin-bottom: 2mm;
+        padding: 1.5mm 3mm;
+        font-size: 8pt;
+      }
+
+      h1 {
+        max-width: none;
+        margin-bottom: 2mm;
+        font-size: 27pt;
+        letter-spacing: -0.5pt;
+      }
+
+      .intro {
+        margin: 2mm 0;
+        font-size: 14pt;
+      }
+
+      .credentials {
+        padding-left: 3mm;
+      }
+
+      .credentials p {
+        font-size: 9.5pt;
+      }
+
+      .credentials p + p {
+        margin-top: 1mm;
+      }
+
+      .photo-placeholder {
+        width: 36mm;
+        margin: 0 auto;
+        border-width: 1mm;
+        box-shadow: 0 0 0 0.5mm #cbd9f2;
+      }
+
+      .subjects-heading {
+        margin-bottom: 2mm;
+        font-size: 13pt;
+      }
+
+      .subjects {
+        gap: 3mm;
+        margin-bottom: 4mm;
+      }
+
+      .subject {
+        min-height: 0;
+        padding: 3mm;
+        border-radius: 3mm;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .subject h3 {
+        margin-bottom: 1.5mm;
+        font-size: 11pt;
+      }
+
+      .subject p {
+        padding: 1.5mm 2mm;
+        font-size: 9pt;
+      }
+
+      .price-section {
+        padding-top: 4mm;
+      }
+
+      .bottom-row {
+        align-items: stretch;
+        gap: 4mm;
+      }
+
+      .prices-card {
+        flex: 1 1 0;
+        padding: 3mm;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .section-label {
+        margin-bottom: 2mm;
+        font-size: 8pt;
+      }
+
+      .prices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2mm;
+      }
+
+      .price {
+        min-width: 0;
+        padding: 2.5mm;
+      }
+
+      .price-value {
+        font-size: 20pt;
+      }
+
+      .price-description {
+        font-size: 9pt;
+      }
+
+      .action {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 3mm;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .format-note {
+        margin-bottom: 2mm;
+        font-size: 11pt;
+      }
+
+      .contact-phone {
+        margin-bottom: 2mm;
+        padding: 2mm;
+        box-shadow: none;
+      }
+
+      .contact-phone-number {
+        font-size: 15pt;
+      }
+
+      .contact-links {
+        gap: 2mm;
+      }
+
+      .contact-link {
+        min-height: 0;
+        padding: 2mm;
+        font-size: 9pt;
+      }
+
+      .details {
+        padding: 5mm 0 0;
+      }
+
+      .details-header {
+        margin-bottom: 2mm;
+      }
+
+      .details-heading {
+        margin-bottom: 0;
+        font-size: 16pt;
+      }
+
+      .details-subtitle {
+        font-size: 8.5pt;
+      }
+
+      .details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5mm;
+      }
+
+      .detail-card {
+        gap: 2.5mm;
+        padding: 3mm;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .detail-icon {
+        flex-basis: 8mm;
+        width: 8mm;
+        height: 8mm;
+        border-radius: 2mm;
+        font-size: 9pt;
+      }
+
+      .detail-content h3 {
+        margin-bottom: 1mm;
+        font-size: 9.5pt;
+      }
+
+      .detail-content p {
+        font-size: 9pt;
+        line-height: 1.35;
+      }
+
+      footer {
+        margin-top: 4mm;
+        padding: 3mm 0 0;
+        font-size: 8pt;
       }
     }
   </style>
@@ -595,26 +898,30 @@
           </div>
 
           <div class="price-section">
-            <div class="section-label">Стоимость · 60 минут</div>
-
             <div class="bottom-row">
 
-              <div class="prices">
-                <div class="price">
-                  <div class="price-value">1 000 ₽</div>
-                  <div class="price-description">Первое занятие</div>
-                </div>
+              <div class="prices-card">
+                <div class="section-label">Стоимость · 60 минут</div>
+                <div class="prices">
+                  <div class="price">
+                    <div class="price-value">1 000 ₽</div>
+                    <div class="price-description">Первое занятие</div>
+                  </div>
 
-                <div class="price">
-                  <div class="price-value">1 500 ₽</div>
-                  <div class="price-description">Последующие занятия</div>
+                  <div class="price">
+                    <div class="price-value">1 500 ₽</div>
+                    <div class="price-description">Последующие занятия</div>
+                  </div>
                 </div>
               </div>
 
               <div class="action">
                 <div class="format-note">
-                  Напишите мне удобным способом:
+                  Свяжитесь со мной удобным способом
                 </div>
+                <a class="contact-phone">
+                  <span class="contact-phone-number">+7 (905) 503-65-85</span>
+                </a>
                 <div class="contact-links">
                   <a class="contact-link contact-link--max"
                      href="https://max.ru/u/f9LHodD0cOL4ejzY8imPFlCl9D6xeHWLSbwJNvfBEO_b9hlyxc5tqDcbCQU"
@@ -709,12 +1016,6 @@
     </section>
 
   </main>
-
-  <footer>
-    <div class="container">
-      Павел · Репетитор по математике, информатике и программированию
-    </div>
-  </footer>
 
 </body>
 </html>
